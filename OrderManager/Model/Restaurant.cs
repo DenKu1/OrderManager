@@ -14,22 +14,27 @@ namespace OrderManager.Model
         {
             Dish[] dishes =
             {
-                new Dish("Plov", Cuisine.American, TimeSpan.FromMinutes(20)),
-                new Dish("Borch", Cuisine.American, TimeSpan.FromMinutes(30)),
-                new Dish("Soup", Cuisine.Russian, TimeSpan.FromMinutes(10)),
-                new Dish("Omelet", Cuisine.Russian, TimeSpan.FromMinutes(5)),
-                new Dish("Burger", Cuisine.American, TimeSpan.FromMinutes(25))
+                new Dish("Plov", 100, DishType.Cold, EquipmentType.BackeryOven, TimeSpan.FromMinutes(10)),
+                new Dish("Borch", 200, DishType.First, EquipmentType.None, TimeSpan.FromMinutes(20)),
+                new Dish("Soup", 300, DishType.First, EquipmentType.None, TimeSpan.FromMinutes(30)),
+                new Dish("Omelet", 400, DishType.Snack, EquipmentType.Brazier, TimeSpan.FromMinutes(40)),
+                new Dish("Burger", 500, DishType.Snack, EquipmentType.Campfire, TimeSpan.FromMinutes(50))
             };
 
             Cook[] cooks =
             {
-                new Cook(new Cuisine[] {Cuisine.American, Cuisine.Asian, Cuisine.Geaorgian} ),
-                new Cook(new Cuisine[] {Cuisine.Russian, Cuisine.Ukrainian } ),
-                new Cook(new Cuisine[] { Cuisine.American, Cuisine.Asian,
-                    Cuisine.Geaorgian, Cuisine.Russian, Cuisine.Ukrainian } )
+                new Cook(1f),
+                new Cook(1.1f),
+                new Cook(1.5f)
             };
 
-            Kitchen = new Kitchen(cooks, dishes);
+            Equipment[] equipment =
+            {
+                new Equipment(TimeSpan.FromMinutes(11), TimeSpan.FromMinutes(21), EquipmentType.BackeryOven),
+                new Equipment(TimeSpan.FromMinutes(12), TimeSpan.FromMinutes(22), EquipmentType.Brazier)
+            };
+
+            Kitchen = new Kitchen(cooks, dishes, equipment);
         }
     }
 }

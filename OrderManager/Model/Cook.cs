@@ -4,64 +4,41 @@ using System.Linq;
 
 namespace OrderManager.Model
 {
-    class Cook : IComparable
-    {
-        private readonly Cuisine[] cuisinesCanCook;
-
-        private List<Dish> dishesToCook = new List<Dish>();
-
+    class Cook 
+    {  
         public DateTime FinishTime { get; private set; }
 
-        public bool IsFree 
+        public float SkillCoefficient { get; }
+
+        public bool IsFree => FinishTime < Clock.Current;
+
+        public Cook(float skillCoefficient)
         {
-            get
-            {
-                return dishesToCook.Count > 0 ? false : true;
-            }
-        }        
+            if (skillCoefficient < 1)            
+                throw new Exception("Cook`s skill must be above or equals one!");            
 
-        public Cook(Cuisine[] cuisines)
+            SkillCoefficient = skillCoefficient;            
+        }       
+
+        public void AddDishToCook(Dish dish, Equipment equipment)
         {
-            if (cuisines.Length == 0)
-            {
-                throw new Exception("Cook must specialize on at least one cuisine!");
-            }
+            if (dish is null)
+                throw new NullReferenceException();
 
-            cuisinesCanCook = cuisines;
+            if (dish.EquipmentType != equipment.EquipmentType)
+                throw new Exception("This equipment can`t cook this dish!");           
 
-            FinishTime = DateTime.Now;
-        }
+            var cookingTime = dish.CookingTime;
 
-        public bool CanCookThisCuisine(Cuisine cuisine)
-        {
-            return cuisinesCanCook.Contains(cuisine);
-        }
+            cookingTime = cookingTime.Divide(SkillCoefficient);            
 
-        public void AddDishToCook(Dish dish)
-        {
-            if (!CanCookThisCuisine(dish.Cuisine))
-            {
-                throw new Exception("Cook cannot cook dish of this cuisine!");
-            }
+            if (dish.EquipmentType != EquipmentType.None)
+                cookingTime += equipment.CookDish(dish);
 
-            dishesToCook.Add(dish);
-            
-            if (FinishTime < DateTime.Now)
-            {
-                FinishTime = DateTime.Now.Add(dish.CookingTime);
-            }
-            else
-            {
-                FinishTime += dish.CookingTime;
-            }
-        }
-
-        public int CompareTo(object obj)
-        {
-            if (obj is Cook cook)
-                return FinishTime.CompareTo(cook.FinishTime);
-            else
-                throw new Exception("Unable to compare two objects");
-        }
+            FinishTime = 
+                FinishTime < Clock.Current 
+                ? Clock.Current.Add(cookingTime) 
+                : FinishTime + dish.CookingTime;            
+        }       
     }
 }

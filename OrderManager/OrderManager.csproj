@@ -52,11 +52,13 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Clock.cs" />
     <Compile Include="Model\Cook.cs" />
     <Compile Include="Model\Dish.cs" />
+    <Compile Include="Model\Equipment.cs" />
     <Compile Include="Model\Kitchen.cs" />
-    <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Restaurant.cs" />
+    <Compile Include="Model\Tools.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">

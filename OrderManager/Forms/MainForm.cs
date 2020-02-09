@@ -8,6 +8,7 @@ namespace OrderManager.Forms
     {
         Restaurant restaurant = new Restaurant();
         Order order = new Order();
+        Clock clock = Clock.GetInstance(DateTime.Now);
 
         public MainForm()
         {

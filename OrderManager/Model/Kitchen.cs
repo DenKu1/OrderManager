@@ -8,91 +8,58 @@ namespace OrderManager.Model
     class Kitchen
     {
         private readonly Cook[] cooks;
-        private readonly Dish[] dishes;
+        private readonly Equipment[] equipment;
 
-        public Dish[] Dishes
-        {                
-            get
-            {
-                return dishes;
-            }
-        }
+        public Dish[] Dishes { get; }
 
-        public Kitchen(Cook[] cooks, Dish[] dishes) 
+        public Kitchen(Cook[] cooks, Dish[] dishes, Equipment[] equipment)
         {
-            this.cooks = cooks;
-            this.dishes = dishes;
+            if (cooks is null || dishes is null || equipment is null)
+                throw new NullReferenceException();
+
+            if (cooks.Length < 1)
+                throw new Exception("Must be at least 1 cook!");
+
+            if (dishes.Length < 1)
+                throw new Exception("Must be at least 1 dish!");
+
+            this.cooks = cooks;           
+            this.equipment = equipment;
+
+            Dishes = dishes;
         }
 
-        public string MakeOrder(Order order)
-        {                       
-            if (order.orderedDishes.Count == 0)
+        public string MakeOrder(Dish dish)
+        {
+            if (dish is null)
                 return "Order can`t contain no dishes!";
+          
+            Equipment equipment =
+                dish.EquipmentType == EquipmentType.None
+                ? null
+                : (FindEquipment(dish.EquipmentType)
+                ?? throw new Exception("There is no equipment to cook this!"));
 
-            DateTime orderFinishTime = DateTime.Now;
+            Cook cook = FindFreeCook() ?? FindLeastBusyCook();
 
-            foreach (var dish in order.orderedDishes)
-            {
-                DateTime dishFinishTime;
+            cook.AddDishToCook(dish, equipment);
 
-                bool freeCookFound = FindFreeCook(dish, out dishFinishTime);
-
-                if (!freeCookFound)
-                {
-                    FindLeastBusyCook(dish, out dishFinishTime);
-                }
-
-                if (orderFinishTime < dishFinishTime)
-                    orderFinishTime = dishFinishTime;
-            }
-           
-            order.SetFinishTime(orderFinishTime);
-
-            return order.ToString();
+            return cook.FinishTime.ToString();
         }
-      
-        private bool FindFreeCook(Dish dish, out DateTime finishTime)
+
+        private Cook FindFreeCook()
         {
-            var choosedCooks = CooksCanCookDish(dish);
-
-            foreach (var cook in choosedCooks)
-            {
-                if (cook.IsFree)
-                {
-                    cook.AddDishToCook(dish);
-
-                    finishTime = cook.FinishTime;
-
-                    return true;
-                }
-            }
-
-            finishTime = DateTime.Now;
-            return false;
+            return cooks.Where(x => x.IsFree).OrderBy(x => x.SkillCoefficient).FirstOrDefault();
         }
 
-        private void FindLeastBusyCook(Dish dish, out DateTime finishTime)
+        private Cook FindLeastBusyCook()
         {
-            var choosedCooks = CooksCanCookDish(dish);
-
-            choosedCooks.Sort();   
-
-            cooks[0].AddDishToCook(dish);
-
-            finishTime = cooks[0].FinishTime;
+            return cooks.OrderBy(x => x.FinishTime).ThenBy(x => x.SkillCoefficient).First();
         }
 
-        private List<Cook> CooksCanCookDish(Dish dish)
+        private Equipment FindEquipment(EquipmentType equipmentType)
         {
-            var CooksCanCookDish = cooks.Select(x => x).Where(x => x.CanCookThisCuisine(dish.Cuisine) == true).ToList();
-
-            if (CooksCanCookDish.Count == 0)
-            {
-                throw new Exception("There is no cook than can cook this dish!");
-            }
-
-            return CooksCanCookDish;
+            return equipment.Where(x => x.EquipmentType == equipmentType).FirstOrDefault();
         }
-
     }
 }
