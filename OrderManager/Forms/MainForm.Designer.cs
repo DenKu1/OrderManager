@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuGrid = new System.Windows.Forms.DataGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnOrder = new System.Windows.Forms.Button();
+            this.dtpClock = new System.Windows.Forms.DateTimePicker();
+            this.btnSetClock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.menuGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,16 +48,15 @@
             this.menuGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.menuGrid.ColumnHeadersVisible = false;
             this.menuGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
             this.Column1});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.menuGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.menuGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.menuGrid.Location = new System.Drawing.Point(13, 13);
             this.menuGrid.Margin = new System.Windows.Forms.Padding(4);
             this.menuGrid.MultiSelect = false;
@@ -67,13 +67,6 @@
             this.menuGrid.Size = new System.Drawing.Size(748, 506);
             this.menuGrid.TabIndex = 26;
             this.menuGrid.TabStop = false;
-            this.menuGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.menuGrid_CellClick);
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "gridCheckBox";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             // 
             // Column1
             // 
@@ -94,13 +87,34 @@
             this.btnOrder.TabIndex = 27;
             this.btnOrder.Text = "Make order";
             this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
+            // dtpClock
+            // 
+            this.dtpClock.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpClock.Location = new System.Drawing.Point(13, 527);
+            this.dtpClock.Name = "dtpClock";
+            this.dtpClock.Size = new System.Drawing.Size(200, 22);
+            this.dtpClock.TabIndex = 28;
+            this.dtpClock.Value = new System.DateTime(2020, 2, 9, 22, 8, 30, 0);
+            // 
+            // btnSetClock
+            // 
+            this.btnSetClock.BackColor = System.Drawing.Color.Firebrick;
+            this.btnSetClock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSetClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetClock.Location = new System.Drawing.Point(219, 527);
+            this.btnSetClock.Name = "btnSetClock";
+            this.btnSetClock.Size = new System.Drawing.Size(21, 22);
+            this.btnSetClock.TabIndex = 29;
+            this.btnSetClock.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 593);
+            this.Controls.Add(this.btnSetClock);
+            this.Controls.Add(this.dtpClock);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.menuGrid);
             this.MaximizeBox = false;
@@ -109,7 +123,6 @@
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.Text = "Order manager";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.menuGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -118,8 +131,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView menuGrid;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Button btnOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DateTimePicker dtpClock;
+        private System.Windows.Forms.Button btnSetClock;
     }
 }

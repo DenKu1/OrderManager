@@ -19,11 +19,11 @@ namespace OrderManager.Model
 
         private readonly DishType dishType;
 
-        public EquipmentType EquipmentType { get; }
+        public HeatingApplianceType HeatingApplianceType { get; }
 
         public TimeSpan CookingTime { get; }
 
-        public Dish(string name, int weight, DishType dishType, EquipmentType equipmentType, TimeSpan cookingTime)
+        public Dish(string name, int weight, DishType dishType, HeatingApplianceType heatingApplianceType, TimeSpan cookingTime)
         {
             if (name is null)
                 throw new NullReferenceException();
@@ -38,13 +38,13 @@ namespace OrderManager.Model
             this.weight = weight;
             this.dishType = dishType;
 
-            EquipmentType = equipmentType;
+            HeatingApplianceType = heatingApplianceType;
             CookingTime = cookingTime;
         }
 
         public override string ToString()
         {
-            return $"Dish: {name}\nWeight: {weight.ToString()}\nDishType: {dishType.ToString()}";
+            return $"Dish: {name}\nWeight: {weight.ToString()}\nDish type: {dishType.ToString()}\nHeating appliance type: {HeatingApplianceType.ToString()}\nCooking time: {CookingTime.ToString()}";
         }
 
     }

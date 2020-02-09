@@ -55,7 +55,7 @@
     <Compile Include="Model\Clock.cs" />
     <Compile Include="Model\Cook.cs" />
     <Compile Include="Model\Dish.cs" />
-    <Compile Include="Model\Equipment.cs" />
+    <Compile Include="Model\HeatingAppliance.cs" />
     <Compile Include="Model\Kitchen.cs" />
     <Compile Include="Model\Restaurant.cs" />
     <Compile Include="Model\Tools.cs" />

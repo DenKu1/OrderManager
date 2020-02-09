@@ -20,20 +20,20 @@ namespace OrderManager.Model
             SkillCoefficient = skillCoefficient;            
         }       
 
-        public void AddDishToCook(Dish dish, Equipment equipment)
+        public void AddDishToCook(Dish dish, HeatingAppliance appliance)
         {
             if (dish is null)
                 throw new NullReferenceException();
 
-            if (dish.EquipmentType != equipment.EquipmentType)
-                throw new Exception("This equipment can`t cook this dish!");           
+            if (appliance != null && appliance.HeatingApplianceType != dish.HeatingApplianceType)
+                throw new Exception("This applianceType can`t cook this dish!");           
 
             var cookingTime = dish.CookingTime;
 
             cookingTime = cookingTime.Divide(SkillCoefficient);            
 
-            if (dish.EquipmentType != EquipmentType.None)
-                cookingTime += equipment.CookDish(dish);
+            if (dish.HeatingApplianceType != HeatingApplianceType.None)
+                cookingTime += appliance.CookDish(dish);
 
             FinishTime = 
                 FinishTime < Clock.Current 

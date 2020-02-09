@@ -8,13 +8,13 @@ namespace OrderManager.Model
     class Kitchen
     {
         private readonly Cook[] cooks;
-        private readonly Equipment[] equipment;
+        private readonly HeatingAppliance[] heatingAppliances;
 
         public Dish[] Dishes { get; }
 
-        public Kitchen(Cook[] cooks, Dish[] dishes, Equipment[] equipment)
+        public Kitchen(Cook[] cooks, Dish[] dishes, HeatingAppliance[] heatingAppliances)
         {
-            if (cooks is null || dishes is null || equipment is null)
+            if (cooks is null || dishes is null || heatingAppliances is null)
                 throw new NullReferenceException();
 
             if (cooks.Length < 1)
@@ -24,7 +24,7 @@ namespace OrderManager.Model
                 throw new Exception("Must be at least 1 dish!");
 
             this.cooks = cooks;           
-            this.equipment = equipment;
+            this.heatingAppliances = heatingAppliances;
 
             Dishes = dishes;
         }
@@ -34,32 +34,32 @@ namespace OrderManager.Model
             if (dish is null)
                 return "Order can`t contain no dishes!";
           
-            Equipment equipment =
-                dish.EquipmentType == EquipmentType.None
+            HeatingAppliance heatingAppliance =
+                dish.HeatingApplianceType == HeatingApplianceType.None
                 ? null
-                : (FindEquipment(dish.EquipmentType)
-                ?? throw new Exception("There is no equipment to cook this!"));
+                : (FindHeatingAppliance(dish.HeatingApplianceType)
+                ?? throw new Exception("There is no appliance to cook this!"));
 
             Cook cook = FindFreeCook() ?? FindLeastBusyCook();
 
-            cook.AddDishToCook(dish, equipment);
+            cook.AddDishToCook(dish, heatingAppliance);
 
             return cook.FinishTime.ToString();
         }
 
         private Cook FindFreeCook()
         {
-            return cooks.Where(x => x.IsFree).OrderBy(x => x.SkillCoefficient).FirstOrDefault();
+            return cooks.Where(x => x.IsFree).OrderByDescending(x => x.SkillCoefficient).FirstOrDefault();
         }
 
         private Cook FindLeastBusyCook()
         {
-            return cooks.OrderBy(x => x.FinishTime).ThenBy(x => x.SkillCoefficient).First();
+            return cooks.OrderBy(x => x.FinishTime).ThenByDescending(x => x.SkillCoefficient).First();
         }
 
-        private Equipment FindEquipment(EquipmentType equipmentType)
+        private HeatingAppliance FindHeatingAppliance(HeatingApplianceType heatingApplianceType)
         {
-            return equipment.Where(x => x.EquipmentType == equipmentType).FirstOrDefault();
+            return heatingAppliances.Where(x => x.HeatingApplianceType == heatingApplianceType).FirstOrDefault();
         }
     }
 }

@@ -7,52 +7,34 @@ namespace OrderManager.Forms
     public partial class MainForm : Form
     {
         Restaurant restaurant = new Restaurant();
-        Order order = new Order();
-        Clock clock = Clock.GetInstance(DateTime.Now);
 
         public MainForm()
         {
             InitializeComponent();
+
+            Load += SetUpMenuGrid;
+            btnOrder.Click += OrderDish;
+            btnSetClock.Click += SetClocks;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {     
-            SetUpMenuGrid();
-        }
-
-        private void btnOrder_Click(object sender, EventArgs e)
+        private void OrderDish(object sender, EventArgs e)
         {
-            string message = restaurant.Kitchen.MakeOrder(order);
-            order = new Order();
-            MessageBox.Show(message);
+            string message = restaurant.Kitchen.MakeOrder((Dish)menuGrid.CurrentRow.Cells[0].Value);
 
-            SetUpMenuGrid();
-        } 
-        
-        private void SetUpMenuGrid()
+            MessageBox.Show(message);
+        }
+
+        private void SetUpMenuGrid(object sender, EventArgs e)
         {
             menuGrid.Rows.Clear();
 
             foreach (var dish in restaurant.Kitchen.Dishes)
-            {
-                menuGrid.Rows.Add(0, dish);
-            }
+                menuGrid.Rows.Add(dish);
         }
 
-        private void menuGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void SetClocks(object sender, EventArgs e)
         {
-            var row = menuGrid.Rows[e.RowIndex];
-           
-            bool isChecked = !Convert.ToBoolean(row.Cells[0].Value);            
-
-            if (isChecked)            
-                order.AddDish((Dish)row.Cells[1].Value);
-            else           
-                order.RemoveDish((Dish)row.Cells[1].Value);            
-
-            row.Cells[0].Value = isChecked;
+            Clock.Current = dtpClock.Value;
         }
-
-        
     }
 }
