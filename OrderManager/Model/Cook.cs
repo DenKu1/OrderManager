@@ -2,7 +2,7 @@
 
 namespace OrderManager.Model
 {
-    class Cook 
+    public class Cook 
     {  
         public DateTime FinishTime { get; private set; }
 

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace OrderManager.Model
 {
-    class Kitchen
+    public class Kitchen
     {
         private readonly Cook[] cooks;
         private readonly HeatingAppliance[] heatingAppliances;

@@ -2,7 +2,7 @@
 
 namespace OrderManager.Model
 {
-    enum HeatingApplianceType
+    public enum HeatingApplianceType
     {
         None,
         BackeryOven,
@@ -10,14 +10,14 @@ namespace OrderManager.Model
         Campfire
     }
 
-    enum HeatingApplianceStatus
+    public enum HeatingApplianceStatus
     {       
         Cold,
         Heating,
         HeatUp        
     }
 
-    class HeatingAppliance 
+    public class HeatingAppliance 
     {
         private readonly TimeSpan warmUpTime;
 

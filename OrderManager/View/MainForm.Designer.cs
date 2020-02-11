@@ -87,6 +87,7 @@
             this.btnOrder.TabIndex = 27;
             this.btnOrder.Text = "Make order";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // dtpClock
             // 

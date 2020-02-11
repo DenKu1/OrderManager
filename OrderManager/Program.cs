@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using OrderManager.Forms;
+using OrderManager.Model;
+using OrderManager.Presenter;
 
 namespace OrderManager
 {
@@ -11,7 +13,11 @@ namespace OrderManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+           
+            MainForm view = new MainForm();
+            MainModel model = new MainModel();
+            MainPresenter presenter = new MainPresenter(view, model);
+            Application.Run(view);
         }
     }
 }

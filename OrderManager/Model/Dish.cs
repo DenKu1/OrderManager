@@ -11,7 +11,7 @@ namespace OrderManager.Model
         Salad
     }
 
-    class Dish 
+    public class Dish 
     {
         private readonly string name;
 
