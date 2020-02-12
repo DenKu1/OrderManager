@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDish xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Dish>
+    <name>Plov</name>
+    <weight>100</weight>
+    <dishType>Cold</dishType>
+    <HeatingApplianceType>BackeryOven</HeatingApplianceType>
+    <CookingTime />
+  </Dish>
+  <Dish>
+    <name>Borch</name>
+    <weight>200</weight>
+    <dishType>First</dishType>
+    <HeatingApplianceType>None</HeatingApplianceType>
+    <CookingTime />
+  </Dish>
+  <Dish>
+    <name>Soup</name>
+    <weight>300</weight>
+    <dishType>First</dishType>
+    <HeatingApplianceType>None</HeatingApplianceType>
+    <CookingTime />
+  </Dish>
+  <Dish>
+    <name>Omelet</name>
+    <weight>400</weight>
+    <dishType>Snack</dishType>
+    <HeatingApplianceType>Brazier</HeatingApplianceType>
+    <CookingTime />
+  </Dish>
+  <Dish>
+    <name>Burger</name>
+    <weight>500</weight>
+    <dishType>Snack</dishType>
+    <HeatingApplianceType>Campfire</HeatingApplianceType>
+    <CookingTime />
+  </Dish>
+</ArrayOfDish>

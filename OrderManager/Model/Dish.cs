@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace OrderManager.Model
 {
+    [DataContract]
     public enum DishType
     {
         Snack,
@@ -11,17 +13,23 @@ namespace OrderManager.Model
         Salad
     }
 
-    class Dish 
+    [DataContract]
+    public class Dish 
     {
-        private readonly string name;
+        [DataMember]
+        public string name;
+        [DataMember]
+        public int weight;
+        [DataMember]
+        public DishType dishType;
+        [DataMember]
+        public HeatingApplianceType HeatingApplianceType { get; set; }
+        [DataMember]
+        public TimeSpan CookingTime { get; set; }
 
-        private readonly int weight;
-
-        private readonly DishType dishType;
-
-        public HeatingApplianceType HeatingApplianceType { get; }
-
-        public TimeSpan CookingTime { get; }
+        public Dish()
+        {
+        }
 
         public Dish(string name, int weight, DishType dishType, HeatingApplianceType heatingApplianceType, TimeSpan cookingTime)
         {

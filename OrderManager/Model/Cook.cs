@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace OrderManager.Model
 {
-    class Cook 
-    {  
-        public DateTime FinishTime { get; private set; }
-
-        public float SkillCoefficient { get; }
-
+    [DataContract]
+    public class Cook 
+    {
+        [IgnoreDataMember]
+        public DateTime FinishTime { get; set; }
+        [DataMember]
+        public float SkillCoefficient { get; set; }
+        
         public bool IsFree => FinishTime < Clock.Current;
+
+        public Cook()
+        {
+        }
 
         public Cook(float skillCoefficient)
         {

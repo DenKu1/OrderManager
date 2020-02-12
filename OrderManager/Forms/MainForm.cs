@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using OrderManager.Model;
 
@@ -6,7 +7,9 @@ namespace OrderManager.Forms
 {
     public partial class MainForm : Form
     {
-        Restaurant restaurant = new Restaurant();
+        string startDirectory;
+
+        Restaurant restaurant;
 
         public MainForm()
         {
@@ -15,6 +18,10 @@ namespace OrderManager.Forms
             Load += SetUpMenuGrid;
             btnOrder.Click += OrderDish;
             btnSetClock.Click += SetClocks;
+
+            startDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+
+            restaurant = new Restaurant(startDirectory + @"/Files/");  
         }
 
         private void OrderDish(object sender, EventArgs e)

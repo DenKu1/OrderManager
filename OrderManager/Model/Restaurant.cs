@@ -1,35 +1,48 @@
 ﻿using System;
+using OrderManager.Data;
 
 namespace OrderManager.Model
 {
     class Restaurant
     {
+        Dish[] dishes;
+
+        Cook[] cooks;
+
+        HeatingAppliance[] heatingAppliances;
+
         public Kitchen Kitchen { get; }
 
-        public Restaurant()
+        public Restaurant(string path)
         {
-            Dish[] dishes =
-            {
-                new Dish("Plov", 100, DishType.Cold, HeatingApplianceType.BackeryOven, TimeSpan.FromMinutes(10)),
-                new Dish("Borch", 200, DishType.First, HeatingApplianceType.None, TimeSpan.FromMinutes(20)),
-                new Dish("Soup", 300, DishType.First, HeatingApplianceType.None, TimeSpan.FromMinutes(30)),
-                new Dish("Omelet", 400, DishType.Snack, HeatingApplianceType.Brazier, TimeSpan.FromMinutes(40)),
-                new Dish("Burger", 500, DishType.Snack, HeatingApplianceType.Campfire, TimeSpan.FromMinutes(50))
-            };
-
-            Cook[] cooks =
-            {
-                new Cook(1.1f),
-                new Cook(1.5f)
-            };
-
-            HeatingAppliance[] heatingAppliances =
-            {
-                new HeatingAppliance(TimeSpan.FromMinutes(11), TimeSpan.FromMinutes(21), HeatingApplianceType.BackeryOven),
-                new HeatingAppliance(TimeSpan.FromMinutes(12), TimeSpan.FromMinutes(22), HeatingApplianceType.Brazier)
-            };
+            DeserializeObjects(out Dish[] dishes, out Cook[] cooks, out HeatingAppliance[] heatingAppliances, path);
 
             Kitchen = new Kitchen(cooks, dishes, heatingAppliances);
         }
+
+        public void SerializeObjects(string path)
+        {
+            var dishSerializer2 = new MyJsonSerializer<Dish[]>();
+            dishSerializer2.Serialize(path + @"/dishes.json", dishes);
+
+            var cookSerializer2 = new MyJsonSerializer<Cook[]>();
+            cookSerializer2.Serialize(path + @"/cooks.json", cooks);
+
+            var heatingApplianceSerializer2 = new MyJsonSerializer<HeatingAppliance[]>();
+            heatingApplianceSerializer2.Serialize(path + @"/heatingAppliances.json", heatingAppliances);
+        }
+
+        public void DeserializeObjects(out Dish[] dishes, out Cook[] cooks, out HeatingAppliance[] heatingAppliances, string path)
+        {
+            var dishSerializer = new MyJsonSerializer<Dish[]>();
+            dishes = dishSerializer.Deserialize(path + @"/dishes.json");
+
+            var cookSerializer = new MyJsonSerializer<Cook[]>();
+            cooks = cookSerializer.Deserialize(path + @"/cooks.json");
+
+            var heatingApplianceSerializer = new MyJsonSerializer<HeatingAppliance[]>();
+            heatingAppliances = heatingApplianceSerializer.Deserialize(path + @"/heatingAppliances.json");
+        }
+
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace OrderManager.Model
 {
-    enum HeatingApplianceType
+    [DataContract]
+    public enum HeatingApplianceType
     {
         None,
         BackeryOven,
@@ -10,23 +12,26 @@ namespace OrderManager.Model
         Campfire
     }
 
-    enum HeatingApplianceStatus
+    [DataContract]
+    public enum HeatingApplianceStatus
     {       
         Cold,
         Heating,
         HeatUp        
     }
 
-    class HeatingAppliance 
+    [DataContract]
+    public class HeatingAppliance 
     {
-        private readonly TimeSpan warmUpTime;
-
-        private readonly TimeSpan coolingTime;
-
-        public HeatingApplianceType HeatingApplianceType { get; }
-
-        public DateTime StartTime { get; private set; }
-
+        [DataMember]
+        public TimeSpan warmUpTime;
+        [DataMember]
+        public TimeSpan coolingTime;
+        [DataMember]
+        public HeatingApplianceType HeatingApplianceType { get; set; }
+        [IgnoreDataMember]
+        public DateTime StartTime { get; set; }
+        [IgnoreDataMember]
         public HeatingApplianceStatus Status
         {
             get
@@ -50,7 +55,11 @@ namespace OrderManager.Model
                 }
             }
 
-        }       
+        }
+
+        public HeatingAppliance()
+        {
+        }
 
         public HeatingAppliance(TimeSpan warmUpTime, TimeSpan coolingTime, HeatingApplianceType heatingApplianceType)
         {
