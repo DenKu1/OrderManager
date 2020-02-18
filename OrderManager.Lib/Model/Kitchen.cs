@@ -25,7 +25,7 @@ namespace OrderManager.Lib.Model
             this.heatingAppliances = heatingAppliances;
 
             Dishes = dishes;
-        }
+        } 
 
         public string MakeOrder(Dish dish)
         {

@@ -12,17 +12,47 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OrderManager.Lib.Model;
+using OrderManager.Lib.ViewModels;
 
 namespace OrderManager.App.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IView
     {
+        public Dish Dish { get; set; }
+
+        public event EventHandler DishOrdered;
+        public event EventHandler Load;
+
         public MainWindow()
         {
             InitializeComponent();
+
+           // btnSetClock.Click += SetClocks;
+        }
+
+        /*
+        private void SetClocks(object sender, EventArgs e)
+        {
+            Clock.Current = dtpClock.Value;
+        }
+        */
+
+        public void SetDishes(IEnumerable<Dish> dishes)
+        {
+            menuGrid.ItemsSource = dishes;
+        }
+
+        private void ButtonOrderClick(object sender, EventArgs e)
+        {
+            Dish = (Dish)menuGrid.SelectedItem;
+
+            DishOrdered?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void WindowLoaded(object sender, RoutedEventArgs e)
+        {
+            Load?.Invoke(this, EventArgs.Empty);
         }
     }
 }
