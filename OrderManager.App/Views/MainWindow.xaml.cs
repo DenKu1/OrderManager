@@ -12,17 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using OrderManager.Lib.Model;
-using OrderManager.Lib.ViewModels;
 
 namespace OrderManager.App.Views
 {
-    public partial class MainWindow : Window, IView
+    public partial class MainWindow : Window
     {
-        public Dish Dish { get; set; }
 
-        public event EventHandler DishOrdered;
-        public event EventHandler Load;
 
         public MainWindow()
         {
@@ -37,7 +32,7 @@ namespace OrderManager.App.Views
             Clock.Current = dtpClock.Value;
         }
         */
-
+        /*
         public void SetDishes(IEnumerable<Dish> dishes)
         {
             menuGrid.ItemsSource = dishes;
@@ -54,5 +49,6 @@ namespace OrderManager.App.Views
         {
             Load?.Invoke(this, EventArgs.Empty);
         }
+        */
     }
 }

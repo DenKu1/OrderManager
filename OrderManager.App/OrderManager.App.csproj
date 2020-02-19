@@ -94,11 +94,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OrderManager.Lib\OrderManager.Lib.csproj">
-      <Project>{65ce7ada-ca16-4dae-8ef9-d7cd9edea267}</Project>
-      <Name>OrderManager.Lib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
