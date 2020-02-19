@@ -11,9 +11,14 @@ namespace OrderManager.Model
 
         HeatingAppliance[] heatingAppliances;
 
+        private readonly IDataSerializer<Dish> dishSerializer;
+        private readonly IDataSerializer<Cook> cookSerializer;
+        private readonly IDataSerializer<HeatingAppliance> heatAppSerializer;
+
+
         public Kitchen Kitchen { get; }
 
-        public Restaurant(string path)
+        public Restaurant(string path, IDataSerializer<Dish> dishSerializer, IDataSerializer<Cook> cookhSerializer,)
         {
             DeserializeObjects(out Dish[] dishes, out Cook[] cooks, out HeatingAppliance[] heatingAppliances, path);
 

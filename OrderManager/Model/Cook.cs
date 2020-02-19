@@ -7,7 +7,7 @@ namespace OrderManager.Model
     public class Cook 
     {
         [IgnoreDataMember]
-        public DateTime FinishTime { get; set; }
+        public DateTime FinishTime { get; }
         [DataMember]
         public float SkillCoefficient { get; set; }
         
