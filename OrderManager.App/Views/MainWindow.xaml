@@ -1,14 +1,38 @@
-﻿<Window Loaded="WindowLoaded" x:Class="OrderManager.App.Views.MainWindow"
+﻿<Window x:Class="OrderManager.App.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OrderManager.App"
+        
         mc:Ignorable="d"
-        Title="Order Manager" Height="450" Width="800" FontFamily="Times New Roman" FontSize="14">
+        Title="Order Manager" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <DataGrid x:Name="menuGrid" HorizontalAlignment="Left" Height="347" Margin="10,10,0,0" VerticalAlignment="Top" Width="774"/>
-        <Button Content="Order" Click="OrderButtonClick" HorizontalAlignment="Left" Margin="614,362,0,0" VerticalAlignment="Top" Width="170" Height="48"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="257*"/>
+            <RowDefinition Height="64*"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Column="0" ItemsSource="{Binding Dishes}"
+                 SelectedItem="{Binding SelectedDish}" Margin="0,0,0.4,10.8" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Name}" />
+                        <TextBlock Text="123" />
+                        <TextBlock Text="4534564" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Command="{Binding OrderDishCommand}" Margin="386,9.2,32.4,22.8" Grid.Row="1">Order</Button>
 
     </Grid>
 </Window>

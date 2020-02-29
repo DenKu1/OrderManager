@@ -25,7 +25,7 @@ namespace OrderManager.Lib.Model
             SkillCoefficient = skillCoefficient;            
         }       
 
-        public void AddDishToCook(Dish dish, HeatingAppliance appliance)
+        public void AddDishToCook(Dish dish, Cooker appliance)
         {
             if (dish is null)
                 throw new NullReferenceException();

@@ -6,11 +6,11 @@ namespace OrderManager.Lib.Model
     class Kitchen
     {
         private readonly Cook[] cooks;
-        private readonly HeatingAppliance[] heatingAppliances;
+        private readonly Cooker[] heatingAppliances;
 
         public Dish[] Dishes { get; }
 
-        public Kitchen(Cook[] cooks, Dish[] dishes, HeatingAppliance[] heatingAppliances)
+        public Kitchen(Cook[] cooks, Dish[] dishes, Cooker[] heatingAppliances)
         {
             if (cooks is null || dishes is null || heatingAppliances is null)
                 throw new NullReferenceException();
@@ -32,7 +32,7 @@ namespace OrderManager.Lib.Model
             if (dish is null)
                 return "Order can`t contain no dishes!";
           
-            HeatingAppliance heatingAppliance =
+            Cooker heatingAppliance = //
                 dish.HeatingApplianceType == HeatingApplianceType.None
                 ? null
                 : (FindHeatingAppliance(dish.HeatingApplianceType)
@@ -55,7 +55,7 @@ namespace OrderManager.Lib.Model
             return cooks.OrderBy(x => x.FinishTime).ThenByDescending(x => x.SkillCoefficient).First();
         }
 
-        private HeatingAppliance FindHeatingAppliance(HeatingApplianceType heatingApplianceType)
+        private Cooker FindHeatingAppliance(HeatingApplianceType heatingApplianceType)
         {
             return heatingAppliances.Where(x => x.HeatingApplianceType == heatingApplianceType).FirstOrDefault();
         }

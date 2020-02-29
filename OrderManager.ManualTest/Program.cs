@@ -4,8 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OrderManager.Lib.Data.Concrete;
-using OrderManager.Lib.Data.Entities;
+using OrderManager.Lib.BLL.Services;
+using OrderManager.Lib.DAL.EF;
+
 
 namespace OrderManager.ManualTest
 {
@@ -37,19 +38,23 @@ namespace OrderManager.ManualTest
                 {
                     Console.WriteLine($"Cook: {cook.Id}, {cook.SkillCoefficient}.");
                 }
-            }  */          
+            }  */
 
-            using (CookRepository db = new CookRepository())
+            Console.WriteLine("Starting...");
+            
+            using (DishService db = new DishService(new OrderContext()))
             {
+                var a = db.GetDishes();
 
-                var a = db.GetAll();
-
-                foreach(var item in a)
-                    Console.WriteLine($"Hello!@=): {item.Id}, {item.SkillCoefficient}.");
-
-
-
+                foreach (var item in a)
+                    Console.WriteLine($"Id: {item.Id} Name: {item.Name}");
             }
+            
+
+
+
+
+            Console.WriteLine("Finished");
 
             Console.Read();
 

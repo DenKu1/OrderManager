@@ -21,7 +21,7 @@ namespace OrderManager.Lib.Model
     }
 
     [DataContract]
-    public class HeatingAppliance 
+    public class Cooker 
     {
         [DataMember]
         public TimeSpan warmUpTime;
@@ -57,11 +57,11 @@ namespace OrderManager.Lib.Model
 
         }
 
-        public HeatingAppliance()
+        public Cooker()
         {
         }
 
-        public HeatingAppliance(TimeSpan warmUpTime, TimeSpan coolingTime, HeatingApplianceType heatingApplianceType)
+        public Cooker(TimeSpan warmUpTime, TimeSpan coolingTime, HeatingApplianceType heatingApplianceType)
         {
             if (warmUpTime <= TimeSpan.Zero || coolingTime <= TimeSpan.Zero)
                 throw new Exception("Time span must be above zero!");

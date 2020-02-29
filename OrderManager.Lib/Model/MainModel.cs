@@ -1,5 +1,4 @@
-﻿using OrderManager.Lib.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace OrderManager.Lib.Model
 {
-    public class MainModel : IModel
+    public class MainModel 
     {
         private Kitchen kitchen;
 
-        public MainModel(Cook[] cooks, Dish[] dishes, HeatingAppliance[] heatingApps)
+        public MainModel(Cook[] cooks, Dish[] dishes, Cooker[] heatingApps)
         {
             kitchen = new Kitchen(cooks, dishes, heatingApps);
         }

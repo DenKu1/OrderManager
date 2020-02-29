@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OrderManager.Lib.Model;
 
-namespace OrderManager.Lib.ViewModels
+namespace OrderManager.Lib.BLL.Interfaces
 {
     interface IModel
     {
-        IEnumerable<Dish> GetDishes();
-
-        string OrderDish(Dish dish);
     }
 }
-
