@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.Lib", "OrderMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.App", "OrderManager.App\OrderManager.App.csproj", "{F62BF841-652C-4595-949C-1EB0F839503D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.ManualTest", "OrderManager.ManualTest\OrderManager.ManualTest.csproj", "{09D69526-CEE6-4374-A6EF-8461F43F2C6B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{F62BF841-652C-4595-949C-1EB0F839503D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F62BF841-652C-4595-949C-1EB0F839503D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F62BF841-652C-4595-949C-1EB0F839503D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{09D69526-CEE6-4374-A6EF-8461F43F2C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09D69526-CEE6-4374-A6EF-8461F43F2C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09D69526-CEE6-4374-A6EF-8461F43F2C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09D69526-CEE6-4374-A6EF-8461F43F2C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
