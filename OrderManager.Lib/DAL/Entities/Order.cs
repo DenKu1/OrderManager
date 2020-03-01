@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 
 namespace OrderManager.Lib.DAL.Entities
 {

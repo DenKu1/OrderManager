@@ -10,8 +10,10 @@ namespace OrderManager.Lib.BLL.Interfaces
 {
     public interface ICookerService : IDisposable
     {
-        TimeSpan CookDish(Dish dish, Cooker cooker);
-
         Cooker FindCooker(Dish dish);
+
+        TimeSpan TimeToCook(Dish dish, Cooker cooker, DateTime orderTime);
+
+        void Update(Cooker cooker, DateTime finishTime);
     }
 }

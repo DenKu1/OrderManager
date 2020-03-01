@@ -13,6 +13,6 @@ namespace OrderManager.Lib.DAL.Entities
         public int CookerTypeId { get; set; }
         public CookerType CookerType { get; set; }       
 
-        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }
     }
 }

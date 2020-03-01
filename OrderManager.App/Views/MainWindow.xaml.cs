@@ -11,7 +11,12 @@ namespace OrderManager.App.Views
         {
             InitializeComponent();
 
-            DataContext = new ApplicationViewModel(new DishService(new OrderContext()));
+            DataContext = new ApplicationViewModel(
+                new CookerService(new OrderContext()),
+                new CookService(new OrderContext()),
+                new DishService(new OrderContext()),
+                new OrderService(new OrderContext())
+                );
         }
 
         private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

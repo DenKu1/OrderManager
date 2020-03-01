@@ -11,6 +11,8 @@ namespace OrderManager.Lib.BLL.Interfaces
     {
         Cook FindCook();
 
-        TimeSpan CookDish(Dish dish);
+        TimeSpan TimeToCook(Dish dish, Cook cook, DateTime orderTime);
+
+        void Update(Cook cook, DateTime finishTime);
     }
 }

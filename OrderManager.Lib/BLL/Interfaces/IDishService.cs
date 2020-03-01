@@ -1,4 +1,5 @@
 ﻿using OrderManager.Lib.BLL.DTO;
+using OrderManager.Lib.DAL.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -6,8 +7,8 @@ namespace OrderManager.Lib.BLL.Interfaces
 {
     public interface IDishService : IDisposable
     {      
-        IEnumerable<DishDTO> GetDishes();
+        IEnumerable<DishDTO> GetDishes();        
 
-        TimeSpan OrderDish(DishDTO dishDTO, ICookerService cookerSv, ICookService cookSv);
+        Dish Find(int id);
     }
 }

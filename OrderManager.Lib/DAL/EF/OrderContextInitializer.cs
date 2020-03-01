@@ -30,37 +30,27 @@ namespace OrderManager.Lib.DAL.EF
                 Weight = 200
             };
 
-            Dish d3 = new Dish
+            Cook c1 = new Cook
             {
-                Name = "Borch3",
-                CookingTime = TimeSpan.FromMinutes(5),
-                CookerType = dt1,
-                Weight = 200
+                SkillCoefficient = 1.2f,
+                FinishTime = DateTime.Now.AddHours(1)
             };
 
-            Dish d4 = new Dish
+            Cooker cr1 = new Cooker
             {
-                Name = "Borch4",
-                CookingTime = TimeSpan.FromMinutes(5),
                 CookerType = dt1,
-                Weight = 200
-            };
-
-            Dish d5 = new Dish
-            {
-                Name = "Borch5",
-                CookingTime = TimeSpan.FromMinutes(5),
-                CookerType = dt1,
-                Weight = 200
+                CoolingTime = TimeSpan.FromHours(1),
+                WarmUpTime = TimeSpan.FromHours(2),
+                FinishTime = DateTime.Now.AddHours(-2)  
             };
 
             db.CookerTypes.Add(dt1);
 
             db.Dishes.Add(d1);
             db.Dishes.Add(d2);
-            db.Dishes.Add(d3);
-            db.Dishes.Add(d4);
-            db.Dishes.Add(d5);
+            db.Cooks.Add(c1);
+            db.Cookers.Add(cr1);
+            //db.Dishes.Add(d5);
 
             db.SaveChanges();
         }

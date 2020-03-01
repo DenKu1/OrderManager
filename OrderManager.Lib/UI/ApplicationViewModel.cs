@@ -3,7 +3,6 @@ using OrderManager.Lib.BLL.Interfaces;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Apex.MVVM;
 
@@ -13,7 +12,8 @@ namespace OrderManager.Lib.UI
     {
         private readonly ICookerService _cookerService;
         private readonly ICookService _cookService;
-        private readonly IDishService _dishService;      
+        private readonly IDishService _dishService;
+        private readonly IOrderService _orderService;
 
         private DishDTO _selectedDish;
 
@@ -43,23 +43,29 @@ namespace OrderManager.Lib.UI
 
         public IEnumerable<DishDTO> Dishes { get; set; }
 
-        public ApplicationViewModel(ICookerService cookerService, ICookService cookService, IDishService dishService)
+        public ApplicationViewModel(ICookerService cookerService, ICookService cookService, 
+            IDishService dishService, IOrderService orderService)
         {
             _dishService = dishService;
             _cookerService = cookerService;
             _cookService = cookService;
+            _orderService = orderService;
+
+            OrderDishCommand = new Command(OrderDish);
 
             Dishes = _dishService.GetDishes();
 
-            OrderDishCommand = new Command(OrderDish);
+            
         }
 
         public void OrderDish()
         {
             if (SelectedDish == null)
-                return;          
+            {
+                return;
+            }
 
-            TimeSpan cookingTime = _dishService.OrderDish(SelectedDish, _cookerService, _cookService);
+            TimeSpan cookingTime = _orderService.MakeOrder(SelectedDish, _cookerService, _cookService, _dishService);
 
             Message = $"The dish will be ready in {cookingTime}.";
         }
