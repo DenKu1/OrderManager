@@ -16,7 +16,7 @@ namespace OrderManager.Lib.DAL.Entities
         public TimeSpan CookingTime { get; set; }
 
         public int? CookerTypeId { get; set; }
-        public CookerType CookerType { get; set; }
+        public virtual CookerType CookerType { get; set; }
         
     }
 }

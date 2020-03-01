@@ -14,25 +14,35 @@ namespace OrderManager.Lib.DAL.EF
                 Name = "Oven"
             };
 
+            CookerType dt2 = new CookerType
+            {
+                Name = "Microwave"
+            };
+
             Dish d1 = new Dish
             {
-                Name = "Borch",
-                CookingTime = TimeSpan.FromMinutes(5),
-                CookerType = dt1,
-                Weight = 200
+                Name = "Cola",
+                CookingTime = TimeSpan.FromSeconds(10),                
+                Weight = 100
             };
 
             Dish d2 = new Dish
             {
                 Name = "Borch2",
                 CookingTime = TimeSpan.FromMinutes(5),
-                CookerType = dt1,
+                CookerType = dt2,
                 Weight = 200
             };
 
             Cook c1 = new Cook
             {
                 SkillCoefficient = 1.2f,
+                FinishTime = DateTime.Now.AddHours(1)
+            };
+
+            Cook c2 = new Cook
+            {
+                SkillCoefficient = 1.5f,
                 FinishTime = DateTime.Now.AddHours(1)
             };
 
@@ -44,13 +54,25 @@ namespace OrderManager.Lib.DAL.EF
                 FinishTime = DateTime.Now.AddHours(-2)  
             };
 
+            Cooker cr2 = new Cooker
+            {
+                CookerType = dt2,
+                CoolingTime = TimeSpan.FromSeconds(30),
+                WarmUpTime = TimeSpan.FromSeconds(30),
+                FinishTime = DateTime.Now
+            };
+
             db.CookerTypes.Add(dt1);
+            db.CookerTypes.Add(dt2);
 
             db.Dishes.Add(d1);
             db.Dishes.Add(d2);
+
             db.Cooks.Add(c1);
+            db.Cooks.Add(c2);
+
             db.Cookers.Add(cr1);
-            //db.Dishes.Add(d5);
+            db.Cookers.Add(cr2);
 
             db.SaveChanges();
         }

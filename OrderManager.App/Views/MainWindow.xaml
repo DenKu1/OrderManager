@@ -20,7 +20,7 @@
             <RowDefinition Height="64*"/>
         </Grid.RowDefinitions>
         <ListBox Grid.Column="0" ItemsSource="{Binding Dishes}"
-                 SelectedItem="{Binding SelectedDish}" Margin="0,0,0.4,10.8" SelectionChanged="ListBox_SelectionChanged">
+                 SelectedItem="{Binding SelectedDish}" Margin="0,0,0.4,10.8">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
@@ -33,6 +33,7 @@
         </ListBox>
 
         <Button Command="{Binding OrderDishCommand}" Margin="386,9.2,32.4,22.8" Grid.Row="1">Order</Button>
+        <TextBlock Text="{Binding Message}" HorizontalAlignment="Left" Margin="21,14.2,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="350"/>
 
     </Grid>
 </Window>

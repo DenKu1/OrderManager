@@ -2,6 +2,8 @@
 using OrderManager.Lib.BLL.Services;
 using OrderManager.Lib.UI;
 using OrderManager.Lib.DAL.EF;
+using OrderManager.Lib.DAL.Interfaces;
+using OrderManager.Lib.DAL;
 
 namespace OrderManager.App.Views
 {
@@ -11,17 +13,14 @@ namespace OrderManager.App.Views
         {
             InitializeComponent();
 
+            IUnitOfWork uof = new UnitOfWork();
+
             DataContext = new ApplicationViewModel(
-                new CookerService(new OrderContext()),
-                new CookService(new OrderContext()),
-                new DishService(new OrderContext()),
-                new OrderService(new OrderContext())
+                new CookerService(uof),
+                new CookService(uof),
+                new DishService(uof),
+                new OrderService(uof)
                 );
-        }
-
-        private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

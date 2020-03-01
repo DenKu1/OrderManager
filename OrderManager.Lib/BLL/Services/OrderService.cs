@@ -1,28 +1,28 @@
 ﻿using OrderManager.Lib.BLL.DTO;
 using OrderManager.Lib.BLL.Interfaces;
-using OrderManager.Lib.DAL.EF;
 using OrderManager.Lib.DAL.Entities;
+using OrderManager.Lib.DAL.Interfaces;
 using System;
 
 namespace OrderManager.Lib.BLL.Services
 {
     public class OrderService : IOrderService
     {
-        private OrderContext _db;
+        private IUnitOfWork _db;
 
-        public OrderService(OrderContext database)
+        public OrderService(IUnitOfWork uof)
         {
-            _db = database;
+            _db = uof;
         }
 
         public TimeSpan MakeOrder(DishDTO dishDTO, ICookerService cookerSv, ICookService cookSv, IDishService dishSv)
         {
             if (dishDTO == null)
             { 
-                throw new NullReferenceException(); ;
+                throw new NullReferenceException();
             }
 
-            DateTime orderTime = DateTime.Now; //!
+            DateTime orderTime = DateTime.Now; 
 
             Dish dish = dishSv.Find(dishDTO.Id);               
           
@@ -39,23 +39,27 @@ namespace OrderManager.Lib.BLL.Services
             cookSv.Update(cook, finishTime);
 
             AddOrder(orderTime, finishTime, dish, cook, cooker);
+            _db.Save();
 
             return maxCookingTime;
         }
 
-        private void AddOrder(DateTime orderTime, DateTime finishTime, Dish Dish, Cook cook, Cooker cooker)
+        private void AddOrder(DateTime orderTime, DateTime finishTime, Dish dish, Cook cook, Cooker cooker)
         {
             Order order = new Order()
             {
                 OrderTime = orderTime,
                 FinishTime = finishTime,
-                Dish = Dish,
-                Cook = cook,
-                Cooker = cooker                
+                DishId = dish.Id,
+                CookId = cook.Id
             };
 
-            _db.Orders.Add(order);
-            _db.SaveChanges();
+            if (cooker != null)
+            {
+                order.CookerId = cooker.Id;
+            }
+
+            _db.OrderRepository.Add(order);            
         }
 
         public void Dispose()

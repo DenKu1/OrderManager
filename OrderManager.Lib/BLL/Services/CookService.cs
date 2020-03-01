@@ -1,7 +1,7 @@
 ﻿using OrderManager.Lib.BLL.Infrastructure;
 using OrderManager.Lib.BLL.Interfaces;
-using OrderManager.Lib.DAL.EF;
 using OrderManager.Lib.DAL.Entities;
+using OrderManager.Lib.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +12,18 @@ namespace OrderManager.Lib.BLL.Services
 {
     public class CookService : ICookService
     {
-        private OrderContext _db;
+        private IUnitOfWork _db;
 
-        public CookService(OrderContext database)
+        public CookService(IUnitOfWork uof)
         {
-            _db = database;
+            _db = uof;
         }
 
         public Cook FindCook()
         {          
            Cook cook = 
-                _db.Cooks
+                _db.CookRepository
+                .GetAll()
                 .OrderBy(x => x.FinishTime)
                 .ThenByDescending(x => x.SkillCoefficient)
                 .FirstOrDefault()
@@ -38,7 +39,7 @@ namespace OrderManager.Lib.BLL.Services
                 throw new NullReferenceException();
             }
 
-            TimeSpan defaultCookingTime = dish.CookingTime.Multiply(cook.SkillCoefficient);
+            TimeSpan defaultCookingTime = dish.CookingTime.Divide(cook.SkillCoefficient);
 
             TimeSpan cookingTime =
             orderTime < cook.FinishTime
@@ -56,7 +57,8 @@ namespace OrderManager.Lib.BLL.Services
             }
 
             cook.FinishTime = finishTime;
-            _db.SaveChanges();
+
+            _db.CookRepository.Update(cook);
         }
 
         public void Dispose()

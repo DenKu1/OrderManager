@@ -67,7 +67,7 @@ namespace OrderManager.Lib.UI
 
             TimeSpan cookingTime = _orderService.MakeOrder(SelectedDish, _cookerService, _cookService, _dishService);
 
-            Message = $"The dish will be ready in {cookingTime}.";
+            Message = $"The dish will be ready in {cookingTime.ToString(@"dd\.hh\:mm")}.";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

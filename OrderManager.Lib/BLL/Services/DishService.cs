@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using OrderManager.Lib.BLL.DTO;
 using OrderManager.Lib.BLL.Interfaces;
-using OrderManager.Lib.DAL.EF;
 using OrderManager.Lib.DAL.Entities;
+using OrderManager.Lib.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -10,16 +10,16 @@ namespace OrderManager.Lib.BLL.Services
 {
     public class DishService : IDishService
     {
-        private OrderContext _db;
+        private IUnitOfWork _db;
 
-        public DishService(OrderContext database)
+        public DishService(IUnitOfWork uof)
         {
-            _db = database;
+            _db = uof;
         }
 
         public IEnumerable<DishDTO> GetDishes()
         {
-            var dishes = _db.Dishes;
+            var dishes = _db.DishRepository.GetAll();
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Dish, DishDTO>()); 
 
@@ -30,7 +30,7 @@ namespace OrderManager.Lib.BLL.Services
 
         public Dish Find(int id)
         {
-            return _db.Dishes.Find(id);
+            return _db.DishRepository.Get(id);
         }
 
         public void Dispose()

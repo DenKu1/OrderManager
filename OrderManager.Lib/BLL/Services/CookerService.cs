@@ -1,23 +1,20 @@
 ﻿using OrderManager.Lib.BLL.Interfaces;
-using OrderManager.Lib.DAL.EF;
 using OrderManager.Lib.DAL.Entities;
+using OrderManager.Lib.DAL.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderManager.Lib.BLL.Services
 {
     public class CookerService : ICookerService
     {
-        private OrderContext _db;
+        private IUnitOfWork _db;
 
-        public CookerService(OrderContext database)
+        public CookerService(IUnitOfWork uof)
         {
-            _db = database;
+            _db = uof;
         }
-       
+
         public Cooker FindCooker(Dish dish)
         {
             if (dish == null)
@@ -31,8 +28,9 @@ namespace OrderManager.Lib.BLL.Services
             }
 
             Cooker cooker =
-                _db.Cookers
-                .Where(x => (x.CookerType == dish.CookerType))
+                _db.CookerRepository
+                .GetAll()
+                .Where(x => (x.CookerType.Id == dish.CookerType.Id))
                 .OrderBy(x => x.FinishTime)
                 .FirstOrDefault()
                 ?? throw new Exception("There is no appliance to prepare this");
@@ -70,7 +68,6 @@ namespace OrderManager.Lib.BLL.Services
                 : cooker.WarmUpTime + dish.CookingTime;
 
             return cookingTime;
-
         }
 
         public void Update(Cooker cooker, DateTime finishTime)
@@ -80,8 +77,10 @@ namespace OrderManager.Lib.BLL.Services
                 return;
             }
 
-            cooker.FinishTime = finishTime;           
-            _db.SaveChanges();
+            cooker.FinishTime = finishTime;
+
+            _db.CookerRepository.Update(cooker); //!
+
         }
 
         public void Dispose()
