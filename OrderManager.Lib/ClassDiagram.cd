@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OrderManager.Lib.BLL.Services.CookerService">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgABAACAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BLL\Services\CookerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OrderManager.Lib.BLL.Services.OrderService" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAgACAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>BLL\Services\OrderService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OrderManager.Lib.BLL.Services.CookService" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAACAAAAAAAAAAABAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BLL\Services\CookService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OrderManager.Lib.BLL.Services.DishService" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEACAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\Services\DishService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OrderManager.Lib.BLL.DTO.DishDTO">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\DTO\DishDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.EF.OrderContextInitializer">
+    <Position X="7.25" Y="9.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\EF\OrderContextInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.EF.OrderContext">
+    <Position X="7.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAACAAAAARAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>DAL\EF\OrderContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.Entities.Order">
+    <Position X="10.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAACABAAAAAAAEAAgAAAAEEAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>DAL\Entities\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.Entities.Cook">
+    <Position X="10.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAACAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Entities\Cook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.Entities.Cooker">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAACAAAAAAAAQAIABAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Entities\Cooker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.Entities.CookerType">
+    <Position X="10.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Entities\CookerType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.Entities.Dish">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAACAAAAAAIAAAQEACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Entities\Dish.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DAL.Repositories.OrderRepository" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAgAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DAL\Repositories\OrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DAL.Repositories.CookerTypeRepository" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAgAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DAL\Repositories\CookerTypeRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DAL.Repositories.CookRepository" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAgAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DAL\Repositories\CookRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DAL.Repositories.DishRepository" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAgAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DAL\Repositories\DishRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DAL.Repositories.CookerRepository" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAgAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DAL\Repositories\CookerRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="OrderManager.Lib.DAL.UnitOfWork">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAIAAACAACAQAEAAkARAAAAEAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DAL\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OrderManager.Lib.UI.ApplicationViewModel">
+    <Position X="1.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAKASAABACgAAAAAAAECAAKAAAEAA=</HashCode>
+      <FileName>UI\ApplicationViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="OrderManager.Lib.BLL.Interfaces.ICookerService">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BLL\Interfaces\ICookerService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.BLL.Interfaces.ICookService" Collapsed="true">
+    <Position X="7" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BLL\Interfaces\ICookService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.BLL.Interfaces.IDishService" Collapsed="true">
+    <Position X="7" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BLL\Interfaces\IDishService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.BLL.Interfaces.IOrderService" Collapsed="true">
+    <Position X="7" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>BLL\Interfaces\IOrderService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.DAL.Interfaces.IUnitOfWork">
+    <Position X="8.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAIAAAAAAAAQAEAAAAQAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DAL\Interfaces\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.DAL.Interfaces.ICookerRepository" Collapsed="true">
+    <Position X="14.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Interfaces\ICookerRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.DAL.Interfaces.ICookerTypeRepository" Collapsed="true">
+    <Position X="14.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Interfaces\ICookerTypeRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.DAL.Interfaces.ICookRepository" Collapsed="true">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Interfaces\ICookRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.DAL.Interfaces.IDishRepository" Collapsed="true">
+    <Position X="14.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Interfaces\IDishRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.DAL.Interfaces.IOrderRepository" Collapsed="true">
+    <Position X="14.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Interfaces\IOrderRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OrderManager.Lib.DAL.Interfaces.IRepository&lt;T&gt;">
+    <Position X="18" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DAL\Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
