@@ -8,7 +8,7 @@ namespace OrderManager.Lib.DAL.EF
     {
         static OrderContext()
         {
-            //Database.SetInitializer(new OrderContextInitializer());
+            Database.SetInitializer(new OrderContextInitializer());
         }
 
         public OrderContext() : base("name=DbConnection")

@@ -53,9 +53,7 @@ namespace OrderManager.Lib.UI
 
             OrderDishCommand = new Command(OrderDish);
 
-            Dishes = _dishService.GetDishes();
-
-            
+            Dishes = _dishService.GetDishes();            
         }
 
         public void OrderDish()
@@ -71,6 +69,7 @@ namespace OrderManager.Lib.UI
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));

@@ -10,7 +10,7 @@ namespace DAL.Repositories
     {
         private OrderContext _db;
 
-        public DishRepository(OrderContext db)
+            public DishRepository(OrderContext db)
         {
             _db = db;
         }
