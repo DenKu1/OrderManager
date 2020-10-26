@@ -15,9 +15,9 @@ equipment (assume that the time of its inclusion is equal to the time of the pre
 order this type of dish).
 
 UML diagrams included:
-+ class diagram
-+ sequence diagram
-+ use-case diagram
++ class diagram (https://drive.google.com/file/d/1qNneDWegHXmDYTDYsSSfn_-lhnSbmPoC/view?usp=sharing)
++ sequence diagram (https://drive.google.com/file/d/1VddMOiDN5Va3SuU_3MGCfNnA5RFQSGOB/view?usp=sharing)
++ use-case diagram (https://drive.google.com/file/d/19tPF2OLAFKk2kPDR6R33SJYp2wqGlZUg/view?usp=sharing)
 
 Main features:
 + Entity Framework Code first database
